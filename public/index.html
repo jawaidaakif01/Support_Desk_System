@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support Desk</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 onclick="showList()">Support Desk</h1>
+  </header>
+
+  <main>
+    <!-- ========== VIEW 1: Dashboard + ticket list ========== -->
+    <section id="listView">
+      <div id="dashboard" class="cards"></div>
+
+      <div class="toolbar">
+        <input id="searchBox" placeholder="Search subject or customer" oninput="loadTickets()">
+        <select id="filterStatus" onchange="loadTickets()">
+          <option value="">All statuses</option>
+          <option>Open</option>
+          <option>In Progress</option>
+          <option>Waiting on Customer</option>
+          <option>Resolved</option>
+        </select>
+        <select id="filterPriority" onchange="loadTickets()">
+          <option value="">All priorities</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+          <option>Urgent</option>
+        </select>
+        <select id="filterAssignee" onchange="loadTickets()">
+          <option value="">All assignees</option>
+        </select>
+        <select id="sortBy" onchange="loadTickets()">
+          <option value="updated">Sort: Recently updated</option>
+          <option value="priority">Sort: Priority</option>
+        </select>
+        <button onclick="showCreate()">+ New Ticket</button>
+      </div>
+
+      <p id="listMessage"></p>
+      <div class="table-wrap">
+      <table id="ticketTable">
+        <thead>
+          <tr>
+            <th>Subject</th><th>Customer</th><th>Status</th>
+            <th>Priority</th><th>Assignee</th><th>Last updated</th>
+          </tr>
+        </thead>
+        <tbody id="ticketRows"></tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- ========== VIEW 2: Create ticket form ========== -->
+    <section id="createView" style="display:none">
+      <h2>New Ticket</h2>
+      <p id="createError" class="error"></p>
+
+      <label>Subject *</label>
+      <input id="newSubject">
+
+      <label>Customer name or email *</label>
+      <input id="newCustomer">
+
+      <label>Description *</label>
+      <textarea id="newDescription" rows="4"></textarea>
+
+      <label>Priority</label>
+      <select id="newPriority">
+        <option>Low</option>
+        <option selected>Medium</option>
+        <option>High</option>
+        <option>Urgent</option>
+      </select>
+
+      <label>Status</label>
+      <select id="newStatus">
+        <option selected>Open</option>
+        <option>In Progress</option>
+        <option>Waiting on Customer</option>
+        <option>Resolved</option>
+      </select>
+
+      <br><br>
+      <button onclick="createTicket()">Create Ticket</button>
+      <button class="grey" onclick="showList()">Cancel</button>
+    </section>
+
+    <!-- ========== VIEW 3: Ticket detail ========== -->
+    <section id="detailView" style="display:none">
+      <button class="grey" onclick="showList()">&larr; Back to list</button>
+      <h2 id="detailTitle"></h2>
+      <p id="detailError" class="error"></p>
+      <p id="detailSuccess" class="success"></p>
+
+      <h3>Edit ticket</h3>
+      <label>Subject *</label>
+      <input id="editSubject">
+
+      <label>Customer *</label>
+      <input id="editCustomer">
+
+      <label>Description *</label>
+      <textarea id="editDescription" rows="4"></textarea>
+
+      <label>Status</label>
+      <select id="editStatus">
+        <option>Open</option>
+        <option>In Progress</option>
+        <option>Waiting on Customer</option>
+        <option>Resolved</option>
+      </select>
+
+      <label>Priority</label>
+      <select id="editPriority">
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+        <option>Urgent</option>
+      </select>
+
+      <label>Assignee</label>
+      <select id="editAssignee">
+        <option value="">Unassigned</option>
+      </select>
+
+      <br><br>
+      <button onclick="saveTicket()">Save changes</button>
+      <button class="red" onclick="deleteTicket()">Delete ticket</button>
+
+      <h3>Replies and notes</h3>
+      <div id="commentList"></div>
+
+      <label>Write as</label>
+      <select id="commentAuthor"></select>
+      <label>Message</label>
+      <textarea id="commentText" rows="3"></textarea>
+      <br><br>
+      <button onclick="addComment('public')">Send public reply</button>
+      <button class="yellow" onclick="addComment('internal')">Add internal note</button>
+
+      <h3>Activity history</h3>
+      <ul id="historyList"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

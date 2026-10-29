@@ -1,0 +1,14 @@
+{
+  "name": "support-desk",
+  "version": "1.0.0",
+  "description": "Simple Support Desk System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "express": "^5.3.0"
+  }
+}

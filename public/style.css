@@ -1,0 +1,56 @@
+body { font-family: Arial, sans-serif; margin: 0; background: #f4f5f7; color: #222; }
+header { background: #2c3e50; color: white; padding: 12px 24px; }
+header h1 { margin: 0; font-size: 22px; cursor: pointer; }
+main { max-width: 1000px; margin: 20px auto; padding: 0 16px; }
+
+/* Dashboard cards */
+.cards { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.card { background: white; padding: 14px 20px; border-radius: 6px; min-width: 110px; box-shadow: 0 1px 3px #ccc; }
+.card b { font-size: 26px; display: block; }
+.card.red b { color: #c0392b; }
+
+/* Toolbar */
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+input, select, textarea { padding: 7px; border: 1px solid #bbb; border-radius: 4px; font-size: 14px; }
+label { display: block; margin-top: 12px; font-weight: bold; }
+section input, section textarea { width: 100%; box-sizing: border-box; }
+.toolbar input { width: 220px; }
+
+button { padding: 8px 14px; border: none; border-radius: 4px; background: #2980b9; color: white; cursor: pointer; font-size: 14px; }
+button.grey { background: #7f8c8d; }
+button.yellow { background: #d68910; }
+
+/* Table */
+table { width: 100%; background: white; border-collapse: collapse; box-shadow: 0 1px 3px #ccc; }
+th, td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; font-size: 14px; }
+th { background: #ecf0f1; }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: #f0f7ff; }
+
+/* Status and priority badges */
+.badge { padding: 3px 8px; border-radius: 10px; font-size: 12px; color: white; white-space: nowrap; }
+.s-Open { background: #2980b9; }
+.s-In-Progress { background: #8e44ad; }
+.s-Waiting-on-Customer { background: #d68910; }
+.s-Resolved { background: #27ae60; }
+.p-Low { background: #7f8c8d; }
+.p-Medium { background: #2980b9; }
+.p-High { background: #e67e22; }
+.p-Urgent { background: #c0392b; }
+.overdue { background: #c0392b; color: white; padding: 2px 6px; border-radius: 4px; font-size: 11px; margin-left: 6px; }
+
+/* Replies and notes */
+.comment { padding: 10px; margin: 8px 0; border-radius: 4px; background: #e8f4fd; border-left: 4px solid #2980b9; }
+.comment.internal { background: #fff6d6; border-left: 4px solid #d68910; }
+.comment small { color: #666; display: block; margin-bottom: 4px; }
+
+.error { color: #c0392b; font-weight: bold; }
+.success { color: #27ae60; font-weight: bold; }
+
+button.red { background: #c0392b; }
+/* On small screens the table scrolls sideways instead of breaking the page */
+.table-wrap { overflow-x: auto; }
+@media (max-width: 700px) {
+  .toolbar input { width: 100%; }
+  .cards .card { min-width: 90px; flex: 1; }
+}
